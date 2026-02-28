@@ -16,22 +16,22 @@ int main() {
     int* c;
     int array[3];
 
-    myReg.f1 = &b;
-    *(myReg.f1) = 10;
+    myReg.f1 = &b; //Setting the value of myReg.f1 pointing to 'b'
+    *(myReg.f1) = 10; //Dereferencing the value of myReg.f1 to 10 (b = 10)
 
-    myReg.f2 = &c;  // Pointing to the pointer of C
-    *(myReg.f2) = &d;
-    *(*(myReg.f2)) = 30;
+    myReg.f2 = &c;  // F2 is pointing to the value of C (f2 = &C)
+    *(myReg.f2) = &d; //Dereferecning the value of pointer f2 to set it to point at the pointer of d (c = &d)
+    *(*(myReg.f2)) = 30; //Dereferencing the value of pointer F2 and dereferencing the value of C.
 
-    myReg.f3 = &myRegR2;
+    myReg.f3 = &myRegR2; //Pointing to Register 2
 
     for (i = 0; i < 3; i++) {
-        myReg.f3->f1 = &array[i];
-        *(myReg.f3->f1) = i;
+        myReg.f3->f1 = &array[i]; //For i (0,2) the value of the pointer of the value array[i] is asigned to pointer f1 (f1 = array[i])
+        *(myReg.f3->f1) = i; //Set the dereference value of f1 (which is a pointer at array[i]) to 'i'
     }
-    myReg.f3->f2 = &c;
+    myReg.f3->f2 = &c; //Set the value of reg2.f2 pointing to the pointer 'c'
 
-    myReg.f3->f3 = NULL;
+    myReg.f3->f3 = NULL; //Set the pointer of reg2.f3 to NULL
 
     printf("\nVALUES:\n");
     printf("Value of B: %d\n", b);
